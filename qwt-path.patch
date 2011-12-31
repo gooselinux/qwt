@@ -1,0 +1,45 @@
+diff -Nur qwt-5.1.1.org/designer/designer.pro qwt-5.1.1/designer/designer.pro
+--- qwt-5.1.1.org/designer/designer.pro	2008-05-24 18:47:36.000000000 +0200
++++ qwt-5.1.1/designer/designer.pro	2009-01-04 17:54:33.000000000 +0100
+@@ -123,7 +123,7 @@
+         RESOURCES += \
+             qwt_designer_plugin.qrc
+ 
+-        target.path = $$[QT_INSTALL_PLUGINS]/designer
++        target.path = QTDESIGNERPATH
+         INSTALLS += target
+     }
+ }
+diff -Nur qwt-5.1.1.org/qwtconfig.pri qwt-5.1.1/qwtconfig.pri
+--- qwt-5.1.1.org/qwtconfig.pri	2008-05-24 18:47:36.000000000 +0200
++++ qwt-5.1.1/qwtconfig.pri	2009-01-04 17:55:07.000000000 +0100
+@@ -7,17 +7,9 @@
+ VER_PAT      = 1
+ VERSION      = $$VER_MAJ.$$VER_MIN.$$VER_PAT
+ 
+-unix {
+-    INSTALLBASE    = /usr/local/qwt-5.1.1
+-}
+-
+-win32 {
+-    INSTALLBASE    = C:/Qwt-5.1.1
+-}
+-
+-target.path    = $$INSTALLBASE/lib
+-headers.path   = $$INSTALLBASE/include
+-doc.path       = $$INSTALLBASE/doc
++target.path    = LIBPATH
++headers.path   = HEADERPATH
++doc.path       = DOCKPATH
+ 
+ ######################################################################
+ # qmake internal options
+@@ -97,7 +89,7 @@
+ # QwtSVGItem.
+ ######################################################################
+ 
+-#CONFIG     += QwtSVGItem
++CONFIG     += QwtSVGItem
+ 
+ ######################################################################
+ # If you have a commercial license you can use the MathML renderer
